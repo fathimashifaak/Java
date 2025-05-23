@@ -1,0 +1,70 @@
+Shell script to display message “Good morning”
+”Good afternoon”
+,
+,
+”Good evening” and “Good
+night” according to system time
+hour=$(date +"%H")
+if [ "$hour"
+-ge 5 ] && [ "$hour"
+then
+echo "Good morning"
+elif [ "$hour"
+-ge 12 ] && [ "$hour"
+then
+echo "Good afternoon"
+elif [ "$hour"
+-ge 17 ] && [ "$hour"
+then
+echo "Good evening"
+else
+-lt 12 ]
+-lt 17 ]
+-lt 21 ]
+echo "Good night"
+fi
+Shell script to display a file from last line to first line
+if [ $# -ne 1 ]
+then
+exit 1
+fi
+echo "syntax is <$0> <filename>"
+if [ -d $1 ]
+then
+echo "$1 is a dictionary"
+exit 2
+fi
+cp $1 file
+l=
+`cat file | wc -l`
+revfname=
+"$1.rev"
+rm $revfname 2>/dev/null
+while [ $l -ge 1 ]
+do
+tail -n 1 file >> $revfname
+l=
+`expr $l - 1`
+head -n $l file > temp
+mv temp file
+done
+10. Shell script to delete all lines if a file containing word linux
+if [ $# -ne 2 ]
+then
+echo " syntax is <$0><string><filename>"
+exit 1
+fi
+term=
+`tty`
+exec<$2
+while read line
+do
+echo $line | grep $1>/dev/null
+echo $line | grep -w $1>/dev/null
+if [ $? -ne 0 ]
+then
+echo $line >>temp
+fi
+done
+exec<$term
+mv temp $2
