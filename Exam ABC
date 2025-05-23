@@ -23,7 +23,7 @@ echo " $yr is a leap year"
 else
 echo " $yr is not a leap year"
 fi
-Shell script to read 3 numbers and test whether they can be sides of a triangle
+2Shell script to read 3 numbers and test whether they can be sides of a triangle
 if [ $# -gt 1 ]
 then
 echo "Syntax error"
